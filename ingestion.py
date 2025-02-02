@@ -1,43 +1,32 @@
 import sys
-import csv
 import os
-import sqlite3
+import duckdb
 
-DB_NAME = "sup-san-reviews.db"
+DB_NAME = "sup-san-reviews.ddb"
 
 def create_db_and_table_if_not_exists():
     """Create the database (if not exists) and the raw_messages table (if not exists)."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-
+    conn = duckdb.connect(DB_NAME)
+    
     create_raw_messages_table = """
     CREATE TABLE IF NOT EXISTS raw_messages (
-        timestamp TEXT NOT NULL,
-        uuid TEXT NOT NULL,
+        timestamp TIMESTAMP NOT NULL,
+        uuid UUID NOT NULL,
         message TEXT NOT NULL
     );
     """
-    cur.execute(create_raw_messages_table)
-
-    conn.commit()
+    conn.execute(create_raw_messages_table)
     conn.close()
 
 def ingest_csv(file_path):
     """Read CSV file and insert rows into raw_messages table."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-
-    with open(file_path, mode='r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            timestamp = row["timestamp"]
-            uuid_val = row["uuid"]
-            message = row["message"]
-            cur.execute(
-                "INSERT INTO raw_messages (timestamp, uuid, message) VALUES (?, ?, ?)",
-                (timestamp, uuid_val, message),
-            )
-    conn.commit()
+    conn = duckdb.connect(DB_NAME)
+    
+    # Ingest CSV directly into the database
+    conn.execute(f"""
+        COPY raw_messages FROM '{file_path}' (DELIMITER ';', HEADER TRUE);
+    """)
+    
     conn.close()
 
 def main():
