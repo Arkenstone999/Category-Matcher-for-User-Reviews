@@ -1,0 +1,293 @@
+{
+  "num": 36,
+  "messages": [
+    {
+      "timestamp": "2022-03-02 06:33:00",
+      "uuid": "d2617ff9-2c49-4f74-b557-d55276a6f789",
+      "message": "Not worth the hype.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 19
+    },
+    {
+      "timestamp": "2022-03-09 02:30:00",
+      "uuid": "bf8ab913-d60c-4991-8498-9548cc7bc562",
+      "message": "I expected more from the signature sandwich.",
+      "category": "FOOD",
+      "num_lemm": 8,
+      "num_char": 44
+    },
+    {
+      "timestamp": "2022-03-01 20:16:00",
+      "uuid": "ed339dda-7e15-48d9-bff6-a2b2c8bb8ec6",
+      "message": "Good value for money.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 21
+    },
+    {
+      "timestamp": "2022-02-14 05:25:00",
+      "uuid": "764d87c6-e49d-4556-9d9e-e394a6071fdc",
+      "message": "Sandwich was perfectly toasted.",
+      "category": "FOOD",
+      "num_lemm": 5,
+      "num_char": 31
+    },
+    {
+      "timestamp": "2022-03-08 12:11:00",
+      "uuid": "0dacb552-2c19-4532-baf5-67d452c2e2d4",
+      "message": "Chicken sandwich was moist and flavorful.",
+      "category": "FOOD",
+      "num_lemm": 7,
+      "num_char": 41
+    },
+    {
+      "timestamp": "2022-03-07 08:39:00",
+      "uuid": "86e6fe4a-345e-4512-809b-19374c7b6445",
+      "message": "I can't get enough of their chicken club!",
+      "category": "GENERAL",
+      "num_lemm": 10,
+      "num_char": 41
+    },
+    {
+      "timestamp": "2022-02-20 06:29:00",
+      "uuid": "9d3c976e-f0e1-470b-930e-e67437bb755b",
+      "message": "The staff was very friendly.",
+      "category": "GENERAL",
+      "num_lemm": 6,
+      "num_char": 28
+    },
+    {
+      "timestamp": "2022-03-01 14:32:00",
+      "uuid": "42b923e7-bcb6-4fd3-989e-03a8d0667bff",
+      "message": "Not impressed, bread was stale.",
+      "category": "FOOD",
+      "num_lemm": 7,
+      "num_char": 31
+    },
+    {
+      "timestamp": "2022-02-18 04:23:00",
+      "uuid": "509a9149-41bc-4b15-858f-dad75c0bfa74",
+      "message": "My go-to spot for a quick meal.",
+      "category": "FOOD",
+      "num_lemm": 10,
+      "num_char": 31
+    },
+    {
+      "timestamp": "2022-02-17 16:26:00",
+      "uuid": "67bb5d11-315b-463d-a68d-8489688753fa",
+      "message": "Their sauces elevate the experience.",
+      "category": "GENERAL",
+      "num_lemm": 6,
+      "num_char": 36
+    },
+    {
+      "timestamp": "2022-02-25 19:41:00",
+      "uuid": "0e69146f-0b11-40ca-9408-6d9d92804c92",
+      "message": "Unique flavors but execution needs work.",
+      "category": "GENERAL",
+      "num_lemm": 7,
+      "num_char": 40
+    },
+    {
+      "timestamp": "2022-03-05 11:10:00",
+      "uuid": "8a5af2e8-ac62-4397-a809-0383833e32ea",
+      "message": "Way too salty for my taste, won't return.",
+      "category": "GENERAL",
+      "num_lemm": 11,
+      "num_char": 41
+    },
+    {
+      "timestamp": "2022-02-19 08:31:00",
+      "uuid": "c0442bd0-befa-464b-a2d4-2f1d6112607d",
+      "message": "Delicious crispy bread with fresh fillings.",
+      "category": "FOOD",
+      "num_lemm": 7,
+      "num_char": 43
+    },
+    {
+      "timestamp": "2022-02-28 12:06:00",
+      "uuid": "9aa89f23-15f6-44c5-9a04-07ee0d6e6b6b",
+      "message": "Terrible customer service, sandwich was cold.",
+      "category": "FOOD",
+      "num_lemm": 8,
+      "num_char": 45
+    },
+    {
+      "timestamp": "2022-02-27 04:30:00",
+      "uuid": "a1b41064-7f98-417e-a3d2-27b081b0b599",
+      "message": "Freshly made and delicious.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 27
+    },
+    {
+      "timestamp": "2022-03-06 07:47:00",
+      "uuid": "64eb6eeb-3e41-441d-a63c-8449830c6cbc",
+      "message": "Freshly made and delicious.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 27
+    },
+    {
+      "timestamp": "2022-02-28 18:51:00",
+      "uuid": "340671eb-9d86-4875-9a03-9265e2ff1903",
+      "message": "Nice variety on the menu.",
+      "category": "GENERAL",
+      "num_lemm": 6,
+      "num_char": 25
+    },
+    {
+      "timestamp": "2022-02-14 10:52:00",
+      "uuid": "6029c772-1d93-4daf-a7f8-0c82d0bc961a",
+      "message": "They forgot my extra toppings.",
+      "category": "GENERAL",
+      "num_lemm": 6,
+      "num_char": 30
+    },
+    {
+      "timestamp": "2022-03-10 12:09:00",
+      "uuid": "4bc4c71c-b393-4627-a4df-7e53db7f5a31",
+      "message": "Good value for money.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 21
+    },
+    {
+      "timestamp": "2022-02-27 23:27:00",
+      "uuid": "6de76372-d39b-425d-b97d-d635e5872b94",
+      "message": "Too much bread, not enough filling.",
+      "category": "FOOD",
+      "num_lemm": 8,
+      "num_char": 35
+    },
+    {
+      "timestamp": "2022-02-23 03:46:00",
+      "uuid": "ab266010-6918-4842-8837-89635607c96a",
+      "message": "Crispy, cheesy goodness.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 24
+    },
+    {
+      "timestamp": "2022-03-11 06:01:00",
+      "uuid": "a36dfcbb-4439-406b-a938-922d6ab37c16",
+      "message": "I'd recommend it to friends.",
+      "category": "GENERAL",
+      "num_lemm": 7,
+      "num_char": 28
+    },
+    {
+      "timestamp": "2022-02-13 15:15:00",
+      "uuid": "2e0cf456-a8c6-46fc-ab7b-203fbfee72b5",
+      "message": "Family-friendly atmosphere with great food.",
+      "category": "FOOD",
+      "num_lemm": 8,
+      "num_char": 43
+    },
+    {
+      "timestamp": "2022-02-17 03:23:00",
+      "uuid": "2429c853-a68a-45ac-b671-84995f586d1e",
+      "message": "Not impressed, bread was stale.",
+      "category": "FOOD",
+      "num_lemm": 7,
+      "num_char": 31
+    },
+    {
+      "timestamp": "2024-02-19 19:03:00",
+      "uuid": "85b9b0bf-0f36-43d7-a032-27f91e16f0d5",
+      "message": "The limited-edition spicy chicken sandwich was a culinary masterpiece. The chicken was marinated perfectly, grilled to perfection, and paired with a tangy, spicy sauce that added just the right amount of heat. The sandwich was complemented by a crisp slaw that balanced out the flavors. Super Sandwiches truly outdid themselves with this offering. I can't wait to see what other seasonal specials they come up with in 2024.",
+      "category": "FOOD",
+      "num_lemm": 79,
+      "num_char": 423
+    },
+    {
+      "timestamp": "2024-02-24 06:20:00",
+      "uuid": "f834d107-08b7-4347-9a1f-4082cc1fda55",
+      "message": "Had a family gathering at Super Sandwiches, and it was a fantastic experience. We tried a wide variety of sandwiches, from classic turkey to vegetarian options. Everyone had their favorite, but the clear winner was the triple-decker club with crispy bacon and house-made aioli. The atmosphere was warm and welcoming, and the staff made sure we had everything we needed. This place continues to be a family favorite.",
+      "category": "FOOD",
+      "num_lemm": 81,
+      "num_char": 415
+    },
+    {
+      "timestamp": "2024-02-27 01:18:00",
+      "uuid": "959fee66-dbde-40c6-82de-2a504fb6de8a",
+      "message": "Visited the newly renovated Super Sandwiches location and was thoroughly impressed. Not only did the ambiance get an upgrade, but the menu now features even more creative options. I ordered the Mediterranean wrap, which was packed with grilled veggies, feta cheese, and a delightful tzatziki sauce. It was fresh, flavorful, and satisfying. The service was fast despite the lunchtime rush, making this an excellent spot for a quick yet gourmet meal.",
+      "category": "FOOD",
+      "num_lemm": 83,
+      "num_char": 448
+    },
+    {
+      "timestamp": "2024-01-12 02:51:00",
+      "uuid": "e1086468-a167-4b46-a5e5-f99adc65a849",
+      "message": "Super Sandwiches continues to impress with their thoughtful approach to sandwiches. The new grain-free bread option is a game-changer for those looking to cut carbs without sacrificing taste. I tried the turkey avocado melt on this bread, and it was nothing short of spectacular. The flavors melded together beautifully, and the bread had a satisfying texture. Highly recommend this innovation!",
+      "category": "FOOD",
+      "num_lemm": 71,
+      "num_char": 394
+    },
+    {
+      "timestamp": "2024-02-17 18:14:00",
+      "uuid": "3638d420-b20b-4b60-b330-cba0ec9d2ea8",
+      "message": "Stopped by on a rainy afternoon and was delighted by the comforting warmth of the Italian sub sandwich. The blend of meats, cheeses, and a drizzle of house dressing made each bite memorable. Paired it with a hot cup of coffee, and it turned a gloomy day into a delightful experience. The staff was courteous and attentive, which added to the positive experience.",
+      "category": "FOOD",
+      "num_lemm": 71,
+      "num_char": 362
+    },
+    {
+      "timestamp": "2024-03-04 11:37:00",
+      "uuid": "e2b91c07-3d04-482f-910d-347218c4d563",
+      "message": "The limited-edition spicy chicken sandwich was a culinary masterpiece. The chicken was marinated perfectly, grilled to perfection, and paired with a tangy, spicy sauce that added just the right amount of heat. The sandwich was complemented by a crisp slaw that balanced out the flavors. Super Sandwiches truly outdid themselves with this offering. I can't wait to see what other seasonal specials they come up with in 2024.",
+      "category": "FOOD",
+      "num_lemm": 79,
+      "num_char": 423
+    },
+    {
+      "timestamp": "2024-03-08 23:28:00",
+      "uuid": "313f6545-a330-4c3e-8de4-5615366e2698",
+      "message": "Had a family gathering at Super Sandwiches, and it was a fantastic experience. We tried a wide variety of sandwiches, from classic turkey to vegetarian options. Everyone had their favorite, but the clear winner was the triple-decker club with crispy bacon and house-made aioli. The atmosphere was warm and welcoming, and the staff made sure we had everything we needed. This place continues to be a family favorite.",
+      "category": "FOOD",
+      "num_lemm": 81,
+      "num_char": 415
+    },
+    {
+      "timestamp": "2024-02-25 22:41:00",
+      "uuid": "2599f698-cdf5-476a-b817-3b5fb332f1f8",
+      "message": "Visited the newly renovated Super Sandwiches location and was thoroughly impressed. Not only did the ambiance get an upgrade, but the menu now features even more creative options. I ordered the Mediterranean wrap, which was packed with grilled veggies, feta cheese, and a delightful tzatziki sauce. It was fresh, flavorful, and satisfying. The service was fast despite the lunchtime rush, making this an excellent spot for a quick yet gourmet meal.",
+      "category": "FOOD",
+      "num_lemm": 83,
+      "num_char": 448
+    },
+    {
+      "timestamp": "2024-03-03 05:40:00",
+      "uuid": "846f8149-ab02-4d34-a477-e53951552a03",
+      "message": "Super Sandwiches continues to impress with their thoughtful approach to sandwiches. The new grain-free bread option is a game-changer for those looking to cut carbs without sacrificing taste. I tried the turkey avocado melt on this bread, and it was nothing short of spectacular. The flavors melded together beautifully, and the bread had a satisfying texture. Highly recommend this innovation!",
+      "category": "FOOD",
+      "num_lemm": 71,
+      "num_char": 394
+    },
+    {
+      "timestamp": "2024-02-28 07:18:00",
+      "uuid": "9468305f-9f34-4ba8-b57e-bd5334d18ffb",
+      "message": "Stopped by on a rainy afternoon and was delighted by the comforting warmth of the Italian sub sandwich. The blend of meats, cheeses, and a drizzle of house dressing made each bite memorable. Paired it with a hot cup of coffee, and it turned a gloomy day into a delightful experience. The staff was courteous and attentive, which added to the positive experience.",
+      "category": "FOOD",
+      "num_lemm": 71,
+      "num_char": 362
+    },
+    {
+      "timestamp": "2022-03-11 14:05:00",
+      "uuid": "9dd8e257-985d-4889-98b4-9dbb4fe04c4d",
+      "message": "My go-to spot for a quick meal.",
+      "category": "FOOD",
+      "num_lemm": 10,
+      "num_char": 31
+    },
+    {
+      "timestamp": "2022-02-12 07:05:00",
+      "uuid": "94cdc36e-3077-460b-a3a8-8a972d307453",
+      "message": "Freshly made and delicious.",
+      "category": "GENERAL",
+      "num_lemm": 5,
+      "num_char": 27
+    }
+  ]
+}

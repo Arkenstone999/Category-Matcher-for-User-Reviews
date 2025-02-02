@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-
-import sys
-import sqlite3
+import duckdb
 import spacy
 from datetime import datetime
 
-DB_NAME = "sup-san-reviews.db"
+DB_NAME = "sup-san-reviews.ddb"
 
 # Define lemma sets
 FOOD_LEMMAS = {"sandwich", "bread", "meat", "cheese", "ham", "omelette", "food", "meal"}
@@ -13,32 +10,30 @@ SERVICE_LEMMAS = {"waiter", "service", "table"}
 
 def create_tables_if_not_exists():
     """Create tables proc_messages and proc_log if they do not exist."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
+    conn = duckdb.connect(DB_NAME)
 
     # Create proc_messages table if not exists
     create_proc_messages_table = """
     CREATE TABLE IF NOT EXISTS proc_messages (
-        timestamp TEXT NOT NULL,
-        uuid TEXT NOT NULL,
+        timestamp TIMESTAMP NOT NULL,
+        uuid UUID NOT NULL,
         message TEXT NOT NULL,
         category TEXT NOT NULL,
         num_lemm INTEGER NOT NULL,
         num_char INTEGER NOT NULL
     );
     """
-    cur.execute(create_proc_messages_table)
+    conn.execute(create_proc_messages_table)
 
     # Create proc_log if not exists
     create_proc_log_table = """
     CREATE TABLE IF NOT EXISTS proc_log (
-        uuid TEXT NOT NULL PRIMARY KEY,
-        proc_time TEXT
+        uuid UUID NOT NULL PRIMARY KEY,
+        proc_time TIMESTAMP
     );
     """
-    cur.execute(create_proc_log_table)
+    conn.execute(create_proc_log_table)
 
-    conn.commit()
     conn.close()
 
 def update_proc_log():
@@ -46,8 +41,7 @@ def update_proc_log():
     1. Insert into proc_log all UUIDs from raw_messages that are not in proc_log.
        We insert (uuid, NULL) as proc_time.
     """
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
+    conn = duckdb.connect(DB_NAME)
 
     # Insert missing uuids into proc_log
     insert_missing_uuids = """
@@ -57,7 +51,7 @@ def update_proc_log():
     LEFT JOIN proc_log p ON r.uuid = p.uuid
     WHERE p.uuid IS NULL;
     """
-    cur.execute(insert_missing_uuids)
+    conn.execute(insert_missing_uuids)
     conn.commit()
     conn.close()
 
@@ -69,8 +63,7 @@ def process_messages():
     """
     nlp = spacy.load("en_core_web_sm")
 
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
+    conn = duckdb.connect(DB_NAME)
 
     # Step 2: Read all unprocessed messages
     select_unprocessed = """
@@ -79,7 +72,7 @@ def process_messages():
     JOIN proc_log p ON r.uuid = p.uuid
     WHERE p.proc_time IS NULL
     """
-    rows = cur.execute(select_unprocessed).fetchall()
+    rows = conn.execute(select_unprocessed).fetchall()
 
     # Step 3: Process them and insert into proc_messages
     for row in rows:
@@ -91,10 +84,10 @@ def process_messages():
             (timestamp, uuid, message, category, num_lemm, num_char)
         VALUES (?, ?, ?, ?, ?, ?)
         """
-        cur.execute(insert_proc, (timestamp, uuid_val, message, category, num_lemm, num_char))
+        conn.execute(insert_proc, (timestamp, uuid_val, message, category, num_lemm, num_char))
 
     # Step 4: Update proc_time in proc_log for these messages
-    current_time = datetime.utcnow().isoformat()
+    current_time = datetime.now().isoformat()
     update_proc_log_sql = """
     UPDATE proc_log
     SET proc_time = ?
@@ -105,7 +98,7 @@ def process_messages():
         WHERE p.proc_time IS NULL
     )
     """
-    cur.execute(update_proc_log_sql, (current_time,))
+    conn.execute(update_proc_log_sql, (current_time,))
     conn.commit()
     conn.close()
 

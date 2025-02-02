@@ -1,34 +1,32 @@
-#!/usr/bin/env python3
-
 import sys
 import json
-import sqlite3
-import os
+import duckdb
+from datetime import datetime
 
-DB_NAME = "sup-san-reviews.db"
+DB_NAME = "sup-san-reviews.ddb"
 
 def read_processed_messages(date_from):
     """
     Reads messages from proc_messages where timestamp >= date_from.
     Returns a list of dicts with the records.
     """
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
+    conn = duckdb.connect(DB_NAME)
 
+    # Proper cast for both the column and the input date
     query = """
     SELECT timestamp, uuid, message, category, num_lemm, num_char
     FROM proc_messages
-    WHERE timestamp >= ?
+    WHERE CAST(timestamp AS DATE) >= CAST(? AS DATE)
     """
-    rows = cur.execute(query, (date_from,)).fetchall()
+    rows = conn.execute(query, (date_from,)).fetchall()
     conn.close()
 
     messages = []
     for row in rows:
-        (timestamp, uuid_val, message, category, num_lemm, num_char) = row
+        timestamp, uuid_val, message, category, num_lemm, num_char = row
         messages.append({
-            "timestamp": timestamp,
-            "uuid": uuid_val,
+            "timestamp": str(timestamp),
+            "uuid": str(uuid_val),
             "message": message,
             "category": category,
             "num_lemm": num_lemm,
@@ -38,10 +36,17 @@ def read_processed_messages(date_from):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python read.py <date_from>")
+        print("Usage: python read.py <date_from (YYYY-MM-DD)>")
         sys.exit(1)
 
     date_from = sys.argv[1]
+
+    # Validate input date format (YYYY-MM-DD)
+    try:
+        datetime.strptime(date_from, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format. Please use YYYY-MM-DD (e.g., 2025-01-01).")
+        sys.exit(1)
 
     # Retrieve the records
     processed_msgs = read_processed_messages(date_from)
