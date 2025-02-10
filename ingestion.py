@@ -1,44 +1,26 @@
 import sys
-import csv
 import os
-import sqlite3
+import duckdb
 
-DB_NAME = "sup-san-reviews.db"
+DB_NAME = "sup-san-reviews.ddb"
 
 def create_db_and_table_if_not_exists():
-    """Create the database (if not exists) and the raw_messages table (if not exists)."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-
-    create_raw_messages_table = """
-    CREATE TABLE IF NOT EXISTS raw_messages (
-        timestamp TEXT NOT NULL,
-        uuid TEXT NOT NULL,
-        message TEXT NOT NULL
-    );
-    """
-    cur.execute(create_raw_messages_table)
-
-    conn.commit()
-    conn.close()
+    with duckdb.connect(DB_NAME) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS raw_messages (
+                timestamp TIMESTAMP NOT NULL,
+                uuid UUID NOT NULL PRIMARY KEY,
+                message TEXT NOT NULL
+            );
+        """)
 
 def ingest_csv(file_path):
     """Read CSV file and insert rows into raw_messages table."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-
-    with open(file_path, mode='r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            timestamp = row["timestamp"]
-            uuid_val = row["uuid"]
-            message = row["message"]
-            cur.execute(
-                "INSERT INTO raw_messages (timestamp, uuid, message) VALUES (?, ?, ?)",
-                (timestamp, uuid_val, message),
-            )
-    conn.commit()
-    conn.close()
+    with duckdb.connect(DB_NAME) as conn:
+        conn.execute(f"""
+            COPY raw_messages FROM '{file_path}' (DELIMITER ';', HEADER TRUE, QUOTE '"')
+            ON CONFLICT(uuid) DO NOTHING;
+        """)
 
 def main():
     if len(sys.argv) < 2:
@@ -46,17 +28,13 @@ def main():
         sys.exit(1)
 
     csv_file_path = sys.argv[1]
-
+    
     if not os.path.exists(csv_file_path):
         print(f"Error: File '{csv_file_path}' not found.")
         sys.exit(1)
 
-    # Create DB and table if not exist
     create_db_and_table_if_not_exists()
-
-    # Ingest CSV data
     ingest_csv(csv_file_path)
-
     print("Ingestion completed successfully.")
 
 if __name__ == "__main__":

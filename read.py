@@ -1,62 +1,48 @@
-#!/usr/bin/env python3
-
 import sys
 import json
-import sqlite3
-import os
+import duckdb
+from datetime import datetime
 
-DB_NAME = "sup-san-reviews.db"
+DB_NAME = "sup-san-reviews.ddb"
 
 def read_processed_messages(date_from):
-    """
-    Reads messages from proc_messages where timestamp >= date_from.
-    Returns a list of dicts with the records.
-    """
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
+    with duckdb.connect(DB_NAME) as conn:
+        rows = conn.execute("""
+            SELECT timestamp, uuid, message, category, num_lemm, num_char
+            FROM proc_messages
+            WHERE CAST(timestamp AS DATE) >= CAST(? AS DATE)
+        """, (date_from,)).fetchall()
 
-    query = """
-    SELECT timestamp, uuid, message, category, num_lemm, num_char
-    FROM proc_messages
-    WHERE timestamp >= ?
-    """
-    rows = cur.execute(query, (date_from,)).fetchall()
-    conn.close()
-
-    messages = []
-    for row in rows:
-        (timestamp, uuid_val, message, category, num_lemm, num_char) = row
-        messages.append({
-            "timestamp": timestamp,
-            "uuid": uuid_val,
-            "message": message,
-            "category": category,
-            "num_lemm": num_lemm,
-            "num_char": num_char
-        })
-    return messages
+    return [
+        {
+            "timestamp": str(row[0]),
+            "uuid": str(row[1]),
+            "message": row[2],
+            "category": row[3],
+            "num_lemm": row[4],
+            "num_char": row[5]
+        } for row in rows
+    ]
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python read.py <date_from>")
+        print("Usage: python read.py <date_from (YYYY-MM-DD)>")
         sys.exit(1)
 
     date_from = sys.argv[1]
+    try:
+        datetime.strptime(date_from, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format. Use YYYY-MM-DD.")
+        sys.exit(1)
 
-    # Retrieve the records
-    processed_msgs = read_processed_messages(date_from)
+    messages = read_processed_messages(date_from)
 
-    # Build output structure
-    output_data = {
-        "num": len(processed_msgs),
-        "messages": processed_msgs
-    }
-
-    # Write to JSON file
     with open("messages.json", "w", encoding="utf-8") as f:
-        json.dump(output_data, f, indent=2)
+        json.dump({"num": len(messages), "messages": messages}, f, indent=2)
 
-    print(f"{len(processed_msgs)} messages written to messages.json")
+    print(f"{len(messages)} messages written to messages.json")
 
 if __name__ == "__main__":
     main()
+
