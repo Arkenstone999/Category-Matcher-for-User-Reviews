@@ -36,7 +36,7 @@ def read_processed_messages(date_from):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python read.py <date_from (YYYY-MM-DD)>")
+        print("Usage: python read.py YYYY-MM-DD")
         sys.exit(1)
 
     date_from = sys.argv[1]

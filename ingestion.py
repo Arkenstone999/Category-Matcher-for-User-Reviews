@@ -10,9 +10,10 @@ def create_db_and_table_if_not_exists():
     
     create_raw_messages_table = """
     CREATE TABLE IF NOT EXISTS raw_messages (
-        timestamp TIMESTAMP NOT NULL,
-        uuid UUID NOT NULL,
-        message TEXT NOT NULL
+        timestamp TIMESTAMP,
+        uuid VARCHAR,
+        message TEXT,
+        UNIQUE(uuid)
     );
     """
     conn.execute(create_raw_messages_table)
